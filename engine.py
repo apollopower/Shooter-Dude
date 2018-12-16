@@ -1,7 +1,11 @@
 import pygame
 from pygame.locals import *
 
+from textures import *
 from map_objects.game_map import *
+from input_handlers import handle_keys
+from render_functions import *
+from entity import *
 
 def main():
     # Initializing pygame session
@@ -12,29 +16,26 @@ def main():
     # Initializing Game Surface
     screen = pygame.display.set_mode((screen_width, screen_height))
 
-    # Colors for Tiles
-    textures = {
-        'WALL': (135, 135, 135),
-        'FLOOR': (255, 255, 255)
-    }
-
-
     test_map = GameMap(map_width, map_height)
     test_map.make_map()
 
-    running = True
+    player = Entity(int(screen_width / 2), int(screen_height / 2), 'PLAYER')
+
 
     # Main Game Loop
-    while running:
+    while True:
+
+        render_all(screen, test_map, player)
+
         # Event Handling
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+            action = handle_keys(event)
         
-        for col in range(map_height):
-            for row in range(map_width):
-                tile = test_map.tiles[row][col]
-                pygame.draw.rect(screen, textures[tile.texture], (row*tile_size, col*tile_size, tile_size, tile_size))
+        move = action.get('move')
+
+        if move:
+            dx, dy = move
+            player.move(dx, dy)
         
         pygame.display.update()
 
