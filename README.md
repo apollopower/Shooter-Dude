@@ -8,4 +8,5 @@ Game currently being written in Python using Pygame. will use the README to keep
 
 - [x] Initialize Window
 - [x] Running Game Loop
+- [x] Basic Tilemap
 - [ ] Placeholder Player Char w/ Movement Keys
