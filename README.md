@@ -10,6 +10,6 @@ Game currently being written in Python using Pygame. will use the README to keep
 - [x] Running Game Loop
 - [x] Basic Tilemap
 - [x] Placeholder Player Char w/ Movement Keys
-- [ ] Wall Collision 
+- [x] Wall Collision 
 - [ ] Shooting Mechanic
 - [ ] Enemy Enteties

@@ -1,3 +1,4 @@
+import math
 import pygame
 from pygame.locals import *
 
@@ -38,3 +39,8 @@ class GameMap:
                 tile.texture = 'FLOOR'
                 tile.blocked = False
                 tile.block_sight = False
+    
+    def is_blocked(self, x, y):
+        x = int(math.ceil(x / tile_size))
+        y = int(math.ceil(y / tile_size))
+        return self.tiles[x][y].blocked

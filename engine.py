@@ -35,7 +35,11 @@ def main():
 
         if move:
             dx, dy = move
-            player.move(dx, dy)
+            destination_x = player.x + dx
+            destination_y = player.y + dy
+
+            if not test_map.is_blocked(destination_x, destination_y):
+                player.move(dx, dy)
         
         pygame.display.update()
 
